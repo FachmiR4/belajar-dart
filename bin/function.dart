@@ -28,7 +28,43 @@ void sayHello2( String firstName, String Lastname ){
   print('Heloo, $firstName $Lastname');
 }
 
-void main(){
-  sayHello2('fachmi', 'Ramadhan');
+// void main(){
+//   sayHello2('fachmi', 'Ramadhan');
+// }
+
+
+// parameter optional
+/**parameter optional
+ * secara default, parameter wajib dilakukan ketika kita memanggil function
+ * namun jika kita ingin membuat parameter yang optional, artinya tidak wajib dikirim, kita bisa wrap dalam kurung[]
+ * dan parameter optional haruslah nullable
+ */
+
+void MyName(String firstName, [String? middleName = '', String? lastName = '']){
+  print('Hello $firstName $middleName $lastName');
 }
 
+// void main(){
+//   MyName('Fahmi');
+//   MyName('fahmi', 'ramadhan');
+//   MyName('fahmi', 'ramadhan', 'bahri');
+// }
+ 
+ /** Named Parameter
+  * secara default posisi parameter ketika memanggil function harus sesusai dengan posisi para meter di function  tersebut
+  * dart memiliki fitur dengan named parameter, dimana saat memanggil paramter kita bisa menyebutkan nama parameternya, sehingga posisisnya perlu harus sesuai dengan posisi parameternya
+  * namun ketika membuat functionnya kita bisa melakukan perubahan ketika membuat parameternya, yaitu dengan menggunakan kurun kurawal {}
+  * secara default, named parameter adalah nullable, sehingga kita perlu mtambahkan karakter
+  */
+
+  void myName2({required String? firstName, String? lastName = 'Default'}){
+    print('Hello $firstName, $lastName');
+  }
+
+  void main(){
+    myName2(firstName: 'fachmi', lastName: 'Ramadhan');
+    myName2(lastName: 'Ramadhan', firstName: 'fachmi');
+    myName2(firstName: 'fachmi');
+    myName2(firstName: 'fachmi');
+    myName2(lastName: 'ramadhan', firstName: 'fachmi');
+  }
