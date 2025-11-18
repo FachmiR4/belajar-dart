@@ -217,13 +217,39 @@ class Customer {
    const ImmutablePoint(this.x, this.y);
   }
 
-  void main(){
-    var point1 = const ImmutablePoint(10, 20);
-    var point2 = const ImmutablePoint(10, 20);
+  // void main(){
+  //   var point1 = const ImmutablePoint(10, 20);
+  //   var point2 = const ImmutablePoint(10, 20);
 
-    if(point1 == point2){
-      print('point1 dan point2 sama');
-    } else {
-      print('point1 dan point2 berbeda');
+  //   if(point1 == point2){
+  //     print('point1 dan point2 sama');
+  //   } else {
+  //     print('point1 dan point2 berbeda');
+  //   }
+  // }
+
+  /** Factory Constructor
+   * Factory Constructor adalah sebuah fitus dimana kita bisa membuat constructor untuk membuat object baru, namun logika cara pembuatan obeject barunya bisa kita sesuaikan 
+   * dengan yang kita inginkan
+   * misal kita ingin mengembalikan object yang sama berkali-kali, kita bisa menggunakan factory constructor
+   * untuk membuat factory constructor kita bisa menggunakan kata kunci factory sebelum pembuatan contructornya
+   */
+
+  class Database {
+    Database(){
+      print('Create new database connection'); 
     }
+
+    static Database database = Database();
+
+    factory Database.get(){
+      return database;
+    }
+  }
+
+  void main(){
+    var database1 = Database.get();
+    var database2 = Database.get();
+
+    print(database2 == database1);
   }
