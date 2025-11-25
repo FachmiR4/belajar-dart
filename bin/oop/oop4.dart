@@ -1,5 +1,9 @@
 import 'data/category.dart';
 import 'data/location.dart';
+import 'data/animal.dart'; // abstract method
+import 'data/product.dart'; // access modifier
+
+import 'data/retangel.dart'; // getter & setter
 
 
 /** Object Class 
@@ -80,15 +84,68 @@ class staff extends manager{
  * dengan demikian abstract class bisa kita gunakan sebagai kontrak untuk class
  */
 
-void main(){
-  var city = City('sumedang');
+// void main(){
+//   var city = City('sumedang');
 
-  // var location = Location(); //error
-}
+//   // var location = Location(); //error
+// }
 
-/** Abstarct Method 
+/** Abstract Method 
  * saat kita membuat class yang abstract, kita bisa membuat abstract method juga didalam abstract tersebut
  * saat kita membuat sebuah abstract method, kita tidak boleh membua blok method tersebut
  * artinya abstract method wajib dioverride di class child
  */
 
+// void main(){
+//   var cat = Cat();
+//   cat.name = 'puss';
+//   cat.run();
+// }
+
+/** Access Modifier
+ * secara default, saat kita membuat field atau Method dalam sebuah class, maka semua field dan method tersebut bisa diakses oleh siapa saja
+ * kadang-kadang kita ingin menyembunyikan field atau method
+ * untuk menyembunyikan akses field atau method, kita bisa menambahkan _(underscore) diawal field atau method nya
+ * Secara otomatis field atau method tersebut, hanya bisa diakses dari file tersebut, dan artinya tidak bisa diakses 
+ */
+
+// void main(){
+//   var product = Product();
+//   product.id = '1';
+//   product.name = 'sapu';
+//   // product._quantity = 100; // terjadi error
+//   product.getQuantity();
+// }
+
+
+/**Encapsulation
+ * Encapsulation artinya memastikan data yang sensitif sebuah object tersebunyi dari akses luar
+ * hal ini bertujuan agar kita bisa menjaga data sebuah object tetap baik dan valid
+ * untuk mencapai ini, biasanya kita akan membuat semua field yang bisa diakses dari luar
+ * agar bisa diubah, kita akan menyediakan method untuk mengubah dan mendapatkan field tersebut
+ * 
+ * Getter dan Setter 
+ * proses encapsulation sudah dibuat standarisasinya, dimana kita bisa menggunakan Getter dan Setter method.\
+ * getter adalah function yang dibuat untuk mengambil data field 
+ * setter adalah function untuk mengubah data field
+ * untuk getter, kita bisa menggunakan kata kunci get
+ * untuk setter, kita bisa menggunakan kata kunci set 
+ * 
+ * Expression Body
+ * jika Getter dan Setter yang kita buat isinya hanya mengambil dan mengubah field, disarankan untuk menggunakan Expression Body
+ * cara membuat Expression Body mirip seperti Anonymous function
+ * 
+ * Getter dan Setter yang tidak perlu 
+ * dalam bahasa pemograman seperti java atau C#, pengguna Getter dan Setter sudah menjadi sesuatu yang lumrah, hal ini kerena mengakses field dan method sangatlah berbeda, oleh karena itu dari awal selalu dibuat getter dan setter
+ * di dart, hal ini tidak perlu menggunakan getter dan setter hanya melakukan redirect data ke field, disarankan tidak perlu menggunakan Getter dan setter, cukup langsung saja menggunakan field 
+ * hal ini dikarenakan dalam dart, jika kedepannya kita ingin menambah Getter dan Setter, kita bisa tambahkan, tanpa harus megubah kode client  
+ */
+
+void main(){
+  var retangel = Retangel();
+  retangel.width = 120;
+  print(retangel.width);
+
+  retangel.length = 130;
+  print(retangel.length);
+}

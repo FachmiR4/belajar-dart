@@ -1,3 +1,5 @@
+import 'data/category.dart';
+
 /**Interface
  * sebelum kita sudah tahu bahwa abstark class bisa kita gunakan sebagai kontrak untuk class childnya 
  * namun sebenernya yang untuk kontrak adalah interface 
@@ -55,3 +57,95 @@ class Avanza implements Car, HasBrand{
     return 4;
   }
 }
+
+/**Mixin 
+ * Mixin merupakan rusable code yang bisa digunakan dikelas lain tanpa harus terkendala dengan pewarisan 
+ *  Mixin mirip dengan melakukan copy paste code dibeberapa tempat, namun dengan cara yang baik 
+ * dengan mixin, kita bisa membuat kode yang sama pa beberapa class 
+ * Satu class bisa menambahkan lebih dari satu mixin, sam seperti interface
+ * untuk membuat mixin, kita bisa menggunakan kata kunci mixin 
+ * untuk menggunakan mixin, kita bisa menggunakan kata kunci with, di ikuti dengan mixin-nya
+ * 
+ * 
+ * Membatasi Mixin 
+ * secara default, semua class bisa menggunakan mixin 
+ * Namun jika kita ingin membatasi hanya class turunan tertentu, kita bisa tambahkan kata kunci on, diikuti dengan class yang kita batasi pada mixin nya 
+ */
+
+abstract class MultiMedia{
+
+}
+
+mixin PlayAble on MultiMedia {
+  String? name;
+
+  void play(){
+    print('play $name');
+  }
+}
+
+mixin StopAble on MultiMedia{
+  String? name;
+
+  void stop(){
+    print('stop $name');
+  }
+
+}
+
+
+class Video extends MultiMedia with PlayAble, StopAble{
+
+}
+
+class Audio extends MultiMedia with PlayAble, StopAble{
+
+}
+
+/** ToString Method 
+ * sebelumnya kita sudah bahas bahwa parent class untuk semua class kecuali null aladah object
+ * didalam object terdapat method bernama toString(), method ini merupakan untuk repsentasi Sting dari object
+ * Contohnya, saat kita menggunakan function print(object), sebenernya yang dipanggil adalah print(object.toString())
+ * kita bisa meng-override method toString jika ingin mengimplemntasikan representasikan data String dari Class yang kita buat 
+ */
+
+class Product{
+  String? id;
+  String? name;
+  int? _quantity; // tidak bisa diakses diluar directory
+
+  int? getQuantity(){
+    return _quantity;
+  }
+
+  String toString (){
+    return 'Product{id: $id, name: $name, quantity: $_quantity}';
+  }
+}
+
+// void main (){
+//   var product = Product();
+//   product.id = '1';
+//   product.name = "Supradi";
+
+//   print(product.toString());
+//   print(product);
+// }
+
+/**Equals Oprator
+ * untuk membadingkan dua sebuah apakah sama atau tidak, biasanya kita menggunakan oprator ==
+ * secara default oprator == adalah milik class object, implementasinya jika kita menggi=unakan oprator == milik class object adalah akan melakukan pengecekan kesamaan object dari lokasi di memori
+ * kadang-kadang,kita ingin mengimplementasikan logika untuk membandingkan object
+ * untuk hal ini, kita bisa melakukan override oprator == yang ada diclass object
+ */
+
+void main(){
+  var category1 = Category('1', 'Laptop');
+  var category2 = Category('1', 'Laptop');
+
+  print(category1 == category1);
+  print(category1 == category2);
+
+}
+
+
