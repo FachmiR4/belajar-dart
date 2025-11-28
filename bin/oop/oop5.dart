@@ -1,4 +1,5 @@
 import 'data/category.dart';
+import 'data/repository.dart';
 
 /**Interface
  * sebelum kita sudah tahu bahwa abstark class bisa kita gunakan sebagai kontrak untuk class childnya 
@@ -139,13 +140,75 @@ class Product{
  * untuk hal ini, kita bisa melakukan override oprator == yang ada diclass object
  */
 
-void main(){
-  var category1 = Category('1', 'Laptop');
-  var category2 = Category('1', 'Laptop');
+// void main(){
+//   var category1 = Category('1', 'Laptop');
+//   var category2 = Category('1', 'Laptop');
 
-  print(category1 == category1);
-  print(category1 == category2);
+//   print(category1 == category1);
+//   print(category1 == category2);
 
+// }
+
+/** Hashcode Getter
+ * hascode kode adalah representasikan integer object kita, mirip toString merupakan representasikan String, hasCode adalah representasikan integer
+ * hasCode sangan bermanfaat untuk membuat struktur data unique sperti HashMap, HasSet, dan lain-lain, karena cukup menggunakan hasCode methode untuk mendapatkan identitas unique obejct kita
+ * secara default hasCode akan mengembalikan nilai integer sesuai detai data di memory, namun kita bisa meng override nya jika kita ingin
+ * 
+ * kontrak HashCode Method
+ * Tidak mudah meng-overrride methode hasCode, karena ada kontraknya:
+ * 1. sebanyak apapun hashCode dipanggil, untuk obeject yang sama, harus menghasilkan data integer yang sama
+ * 2. jika ada 2 object yang sama jika dibandingkan menggunakan methode equals, maka nilai hashCodenya juga harus sama 
+ */
+
+// void main(){
+//   var category1 = Category('1', 'Laptop');
+//   var category2 = Category('1', 'Laptop');
+
+//   print(category1 == category1);
+//   print(category1 == category2);
+
+//   print(category1.hashCode);
+//   print(category2.hashCode);
+// }
+
+/** No Such Method
+ * NoSuchMethode merupakan sebuah methode yang terdapat di class object yang bisa kita override untuk mendeteksi atau beraksi ketika sebuah method yang tidak ada dipanggil
+ * NosuchMethode hanya bisa digunakan ketia objectnya adalah dynamic  atau sebua abstract class
+ * 
+ * NoSuchMethod untuk abstract Class
+ * salah satu pengguna NoSuchMethod yang biasanya digunakan adaalah sebagai implemntasi Abstract class
+ * dengan menggunakan NosuchMethod, kita tidak perlu mengimplemntasikan method yang terdapat di abstract class lagi
+ */
+
+// void main(){
+//   dynamic repository = Repository('products');
+
+//   repository.id('1');
+//   repository.name('Laptop');
+//   repository.quantity(1000);
+//   repository.location(100000);
+
+// }
+
+/**Callable Class 
+ * Callable Class merupakan class yang bisa dipanggil seperti function 
+ * untuk membuat callable class, kita perlu menambahkan sebuah method bernama call() di class tersebut
+ * parameter dan return value dari method tersebut bisa disesuaikan keinginan kita
+ * setelah membuat objectnya, kita bisa langsung memanggil methode call tersebut menggunakan nama objectnya saja
+ */
+
+class Sum {
+  int first;
+  int second;
+
+  Sum(this.first, this.second);
+
+  int call(){
+    return first + second;
+  }
 }
 
-
+void main(){
+  var sum = Sum(10, 10);
+  print(sum());
+}

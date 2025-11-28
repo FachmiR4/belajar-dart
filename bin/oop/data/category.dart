@@ -16,4 +16,10 @@ class Category {
       return false;
     }
   }
+  
+    int get hashCode {
+      var result = id.hashCode;
+      result += name.hashCode;
+      return result;
+    }
 }
